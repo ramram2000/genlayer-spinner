@@ -20,13 +20,13 @@ Color is GenLayer's official Kinetic Cobalt (`#110FFF`), with a subtle radial gr
 
 ## Files
 
-- `genlayer-spinner.svg` — the spinner, SMIL-animated (works cross-browser, including as a plain `<img src>`), infinite loop.
+- `genlayer-consensus-spinner.svg` — the spinner, SMIL-animated (works cross-browser, including as a plain `<img src>`), infinite loop.
 - `preview.html` — live preview on light and dark backgrounds at multiple sizes.
 
 ## Usage
 
 ```html
-<img src="genlayer-spinner.svg" width="48" height="48" alt="Loading">
+<img src="genlayer-consensus-spinner.svg" width="48" height="48" alt="Loading">
 ```
 
 Respects `prefers-reduced-motion`.
