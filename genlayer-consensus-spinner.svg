@@ -1,60 +1,70 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="title desc">
   <title id="title">GenLayer Consensus Spinner</title>
-  <desc id="desc">A seamless loading spinner inspired by independent agents converging into a shared state.</desc>
-  <g color="#110FFF">
-    <path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" opacity=".22"
-      d="M60 15 L99 37 M99 37 L99 83 M99 83 L60 105 M60 105 L21 83 M21 83 L21 37 M21 37 Z"/>
+  <desc id="desc">Five validator nodes orbit slowly, pulse independently, then briefly converge on a shared state — a loading motif built on GenLayer's Optimistic Democracy consensus.</desc>
 
-    <circle fill="none" stroke="currentColor" stroke-width="3" cx="60" cy="60" r="14" opacity=".9"/>
+  <defs>
+    <radialGradient id="glCore" cx="35%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#5B59FF"/>
+      <stop offset="100%" stop-color="#110FFF"/>
+    </radialGradient>
+  </defs>
 
-    <circle fill="currentColor" cx="60" cy="15" r="5.5">
-      <animate attributeName="cy" values="15;26.25;15" keyTimes="0;.5;1" calcMode="spline"
-        keySplines=".65 0 .35 1;.65 0 .35 1" dur="2.4s" repeatCount="indefinite"/>
-      <animate attributeName="r" values="5.5;4;5.5" keyTimes="0;.5;1" calcMode="spline"
-        keySplines=".65 0 .35 1;.65 0 .35 1" dur="2.4s" repeatCount="indefinite"/>
+  <!-- the finalized state: fixed, does not orbit -->
+  <rect fill="url(#glCore)" x="52" y="52" width="16" height="16" rx="4">
+    <animate attributeName="x" values="52;51.25;52" keyTimes="0;.5;1" calcMode="spline"
+      keySplines=".5 0 .3 1;.5 0 .3 1" dur="2.4s" repeatCount="indefinite"/>
+    <animate attributeName="y" values="52;51.25;52" keyTimes="0;.5;1" calcMode="spline"
+      keySplines=".5 0 .3 1;.5 0 .3 1" dur="2.4s" repeatCount="indefinite"/>
+    <animate attributeName="width" values="16;17.5;16" keyTimes="0;.5;1" calcMode="spline"
+      keySplines=".5 0 .3 1;.5 0 .3 1" dur="2.4s" repeatCount="indefinite"/>
+    <animate attributeName="height" values="16;17.5;16" keyTimes="0;.5;1" calcMode="spline"
+      keySplines=".5 0 .3 1;.5 0 .3 1" dur="2.4s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- the validator cluster: orbits the core slowly, as a whole -->
+  <g>
+    <animateTransform attributeName="transform" type="rotate" values="0 60 60;360 60 60"
+      dur="22s" repeatCount="indefinite"/>
+
+    <!-- convergence lines: fire together once per larger cycle, independent of each node's own rhythm -->
+    <path fill="none" stroke="#110FFF" stroke-width="2.5" stroke-linecap="round" d="M60 18 L60 60">
+      <animate attributeName="opacity" values="0;0;.65;0;0" keyTimes="0;.4;.5;.6;1" dur="2.4s" repeatCount="indefinite"/>
+    </path>
+    <path fill="none" stroke="#110FFF" stroke-width="1.5" stroke-linecap="round" d="M99.94 47.02 L60 60">
+      <animate attributeName="opacity" values="0;0;.55;0;0" keyTimes="0;.4;.5;.6;1" dur="2.4s" repeatCount="indefinite"/>
+    </path>
+    <path fill="none" stroke="#110FFF" stroke-width="1.5" stroke-linecap="round" d="M84.69 93.98 L60 60">
+      <animate attributeName="opacity" values="0;0;.55;0;0" keyTimes="0;.4;.5;.6;1" dur="2.4s" repeatCount="indefinite"/>
+    </path>
+    <path fill="none" stroke="#110FFF" stroke-width="1.5" stroke-linecap="round" d="M35.31 93.98 L60 60">
+      <animate attributeName="opacity" values="0;0;.55;0;0" keyTimes="0;.4;.5;.6;1" dur="2.4s" repeatCount="indefinite"/>
+    </path>
+    <path fill="none" stroke="#110FFF" stroke-width="1.5" stroke-linecap="round" d="M20.06 47.02 L60 60">
+      <animate attributeName="opacity" values="0;0;.55;0;0" keyTimes="0;.4;.5;.6;1" dur="2.4s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- leader validator — larger, slightly slower rhythm -->
+    <circle fill="url(#glCore)" cx="60" cy="18" r="7">
+      <animate attributeName="r" values="7;8.5;7" keyTimes="0;.5;1" calcMode="spline"
+        keySplines=".45 0 .25 1;.45 0 .25 1" dur="2.1s" repeatCount="indefinite"/>
     </circle>
 
-    <circle fill="currentColor" cx="99" cy="37" r="5.5">
-      <animate attributeName="cx" values="99;89.25;99" keyTimes="0;.5;1" calcMode="spline"
-        keySplines=".65 0 .35 1;.65 0 .35 1" dur="2.4s" repeatCount="indefinite"/>
-      <animate attributeName="cy" values="37;42.75;37" keyTimes="0;.5;1" calcMode="spline"
-        keySplines=".65 0 .35 1;.65 0 .35 1" dur="2.4s" repeatCount="indefinite"/>
-      <animate attributeName="r" values="5.5;4;5.5" keyTimes="0;.5;1" calcMode="spline"
-        keySplines=".65 0 .35 1;.65 0 .35 1" dur="2.4s" repeatCount="indefinite"/>
+    <!-- 4 peer validators — each its own tempo and phase, deliberately unsynced -->
+    <circle fill="url(#glCore)" cx="99.94" cy="47.02" r="5">
+      <animate attributeName="r" values="5;6.3;5" keyTimes="0;.5;1" calcMode="spline"
+        keySplines=".5 0 .3 1;.5 0 .3 1" dur="1.9s" begin="-.22s" repeatCount="indefinite"/>
     </circle>
-
-    <circle fill="currentColor" cx="99" cy="83" r="5.5">
-      <animate attributeName="cx" values="99;89.25;99" keyTimes="0;.5;1" calcMode="spline"
-        keySplines=".65 0 .35 1;.65 0 .35 1" dur="2.4s" repeatCount="indefinite"/>
-      <animate attributeName="cy" values="83;77.25;83" keyTimes="0;.5;1" calcMode="spline"
-        keySplines=".65 0 .35 1;.65 0 .35 1" dur="2.4s" repeatCount="indefinite"/>
-      <animate attributeName="r" values="5.5;4;5.5" keyTimes="0;.5;1" calcMode="spline"
-        keySplines=".65 0 .35 1;.65 0 .35 1" dur="2.4s" repeatCount="indefinite"/>
+    <circle fill="url(#glCore)" cx="84.69" cy="93.98" r="5">
+      <animate attributeName="r" values="5;6.3;5" keyTimes="0;.5;1" calcMode="spline"
+        keySplines=".4 0 .2 1;.4 0 .2 1" dur="2.05s" begin="-.63s" repeatCount="indefinite"/>
     </circle>
-
-    <circle fill="currentColor" cx="60" cy="105" r="5.5">
-      <animate attributeName="cy" values="105;93.75;105" keyTimes="0;.5;1" calcMode="spline"
-        keySplines=".65 0 .35 1;.65 0 .35 1" dur="2.4s" repeatCount="indefinite"/>
-      <animate attributeName="r" values="5.5;4;5.5" keyTimes="0;.5;1" calcMode="spline"
-        keySplines=".65 0 .35 1;.65 0 .35 1" dur="2.4s" repeatCount="indefinite"/>
+    <circle fill="url(#glCore)" cx="35.31" cy="93.98" r="5">
+      <animate attributeName="r" values="5;6.3;5" keyTimes="0;.5;1" calcMode="spline"
+        keySplines=".5 0 .3 1;.5 0 .3 1" dur="1.85s" begin="-.41s" repeatCount="indefinite"/>
     </circle>
-
-    <circle fill="currentColor" cx="21" cy="83" r="5.5">
-      <animate attributeName="cx" values="21;30.75;21" keyTimes="0;.5;1" calcMode="spline"
-        keySplines=".65 0 .35 1;.65 0 .35 1" dur="2.4s" repeatCount="indefinite"/>
-      <animate attributeName="cy" values="83;77.25;83" keyTimes="0;.5;1" calcMode="spline"
-        keySplines=".65 0 .35 1;.65 0 .35 1" dur="2.4s" repeatCount="indefinite"/>
-      <animate attributeName="r" values="5.5;4;5.5" keyTimes="0;.5;1" calcMode="spline"
-        keySplines=".65 0 .35 1;.65 0 .35 1" dur="2.4s" repeatCount="indefinite"/>
-    </circle>
-
-    <circle fill="currentColor" cx="21" cy="37" r="5.5">
-      <animate attributeName="cx" values="21;30.75;21" keyTimes="0;.5;1" calcMode="spline"
-        keySplines=".65 0 .35 1;.65 0 .35 1" dur="2.4s" repeatCount="indefinite"/>
-      <animate attributeName="cy" values="37;42.75;37" keyTimes="0;.5;1" calcMode="spline"
-        keySplines=".65 0 .35 1;.65 0 .35 1" dur="2.4s" repeatCount="indefinite"/>
-      <animate attributeName="r" values="5.5;4;5.5" keyTimes="0;.5;1" calcMode="spline"
-        keySplines=".65 0 .35 1;.65 0 .35 1" dur="2.4s" repeatCount="indefinite"/>
+    <circle fill="url(#glCore)" cx="20.06" cy="47.02" r="5">
+      <animate attributeName="r" values="5;6.3;5" keyTimes="0;.5;1" calcMode="spline"
+        keySplines=".4 0 .2 1;.4 0 .2 1" dur="1.95s" begin="-.85s" repeatCount="indefinite"/>
     </circle>
   </g>
 </svg>
