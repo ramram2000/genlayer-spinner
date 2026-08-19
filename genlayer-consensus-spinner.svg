@@ -1,34 +1,64 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="title desc">
   <title id="title">GenLayer Consensus Spinner</title>
   <desc id="desc">A seamless loading spinner inspired by independent agents converging into a shared state.</desc>
-  <style>
-    .node { fill: currentColor; }
-    .link { fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; opacity: .22; }
-    .core { fill: none; stroke: currentColor; stroke-width: 3; }
-    .orbit { transform-origin: 60px 60px; animation: orbit 2.4s cubic-bezier(.65,0,.35,1) infinite; }
-    .nodeA { animation: nodeA 2.4s cubic-bezier(.65,0,.35,1) infinite; transform-origin:60px 60px; }
-    .nodeB { animation: nodeB 2.4s cubic-bezier(.65,0,.35,1) infinite; transform-origin:60px 60px; }
-    .nodeC { animation: nodeC 2.4s cubic-bezier(.65,0,.35,1) infinite; transform-origin:60px 60px; }
-    .nodeD { animation: nodeD 2.4s cubic-bezier(.65,0,.35,1) infinite; transform-origin:60px 60px; }
-    .nodeE { animation: nodeE 2.4s cubic-bezier(.65,0,.35,1) infinite; transform-origin:60px 60px; }
-    .nodeF { animation: nodeF 2.4s cubic-bezier(.65,0,.35,1) infinite; transform-origin:60px 60px; }
-    @keyframes orbit { 0%,100%{transform:rotate(0deg)} 50%{transform:rotate(60deg)} }
-    @keyframes nodeA {0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(0,0) scale(.72)}}
-    @keyframes nodeB {0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-3px,2px) scale(.72)}}
-    @keyframes nodeC {0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-3px,-2px) scale(.72)}}
-    @keyframes nodeD {0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(0,0) scale(.72)}}
-    @keyframes nodeE {0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(3px,-2px) scale(.72)}}
-    @keyframes nodeF {0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(3px,2px) scale(.72)}}
-    @media (prefers-reduced-motion: reduce) { .orbit,.nodeA,.nodeB,.nodeC,.nodeD,.nodeE,.nodeF { animation:none; } }
-  </style>
-  <g class="orbit" color="#6B4EFF">
-    <path class="link" d="M60 15 L99 37 M99 37 L99 83 M99 83 L60 105 M60 105 L21 83 M21 83 L21 37 M21 37 Z"/>
-    <circle class="core" cx="60" cy="60" r="14" opacity=".9"/>
-    <circle class="node nodeA" cx="60" cy="15" r="5.5"/>
-    <circle class="node nodeB" cx="99" cy="37" r="5.5"/>
-    <circle class="node nodeC" cx="99" cy="83" r="5.5"/>
-    <circle class="node nodeD" cx="60" cy="105" r="5.5"/>
-    <circle class="node nodeE" cx="21" cy="83" r="5.5"/>
-    <circle class="node nodeF" cx="21" cy="37" r="5.5"/>
+  <g color="#110FFF">
+    <path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" opacity=".22"
+      d="M60 15 L99 37 M99 37 L99 83 M99 83 L60 105 M60 105 L21 83 M21 83 L21 37 M21 37 Z"/>
+
+    <circle fill="none" stroke="currentColor" stroke-width="3" cx="60" cy="60" r="14" opacity=".9"/>
+
+    <!-- node A: top (stays put, only breathes) -->
+    <circle fill="currentColor" cx="60" cy="15" r="5.5">
+      <animateTransform attributeName="transform" type="scale" additive="sum"
+        values="1;.72;1" keyTimes="0;.5;1" calcMode="spline"
+        keySplines=".65 0 .35 1;.65 0 .35 1" dur="2.4s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- node B: upper right -->
+    <circle fill="currentColor" cx="99" cy="37" r="5.5">
+      <animateTransform attributeName="transform" type="translate" additive="sum"
+        values="0,0;-3,2;0,0" keyTimes="0;.5;1" calcMode="spline"
+        keySplines=".65 0 .35 1;.65 0 .35 1" dur="2.4s" repeatCount="indefinite"/>
+      <animateTransform attributeName="transform" type="scale" additive="sum"
+        values="1;.72;1" keyTimes="0;.5;1" calcMode="spline"
+        keySplines=".65 0 .35 1;.65 0 .35 1" dur="2.4s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- node C: lower right -->
+    <circle fill="currentColor" cx="99" cy="83" r="5.5">
+      <animateTransform attributeName="transform" type="translate" additive="sum"
+        values="0,0;-3,-2;0,0" keyTimes="0;.5;1" calcMode="spline"
+        keySplines=".65 0 .35 1;.65 0 .35 1" dur="2.4s" repeatCount="indefinite"/>
+      <animateTransform attributeName="transform" type="scale" additive="sum"
+        values="1;.72;1" keyTimes="0;.5;1" calcMode="spline"
+        keySplines=".65 0 .35 1;.65 0 .35 1" dur="2.4s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- node D: bottom -->
+    <circle fill="currentColor" cx="60" cy="105" r="5.5">
+      <animateTransform attributeName="transform" type="scale" additive="sum"
+        values="1;.72;1" keyTimes="0;.5;1" calcMode="spline"
+        keySplines=".65 0 .35 1;.65 0 .35 1" dur="2.4s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- node E: lower left -->
+    <circle fill="currentColor" cx="21" cy="83" r="5.5">
+      <animateTransform attributeName="transform" type="translate" additive="sum"
+        values="0,0;3,-2;0,0" keyTimes="0;.5;1" calcMode="spline"
+        keySplines=".65 0 .35 1;.65 0 .35 1" dur="2.4s" repeatCount="indefinite"/>
+      <animateTransform attributeName="transform" type="scale" additive="sum"
+        values="1;.72;1" keyTimes="0;.5;1" calcMode="spline"
+        keySplines=".65 0 .35 1;.65 0 .35 1" dur="2.4s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- node F: upper left -->
+    <circle fill="currentColor" cx="21" cy="37" r="5.5">
+      <animateTransform attributeName="transform" type="translate" additive="sum"
+        values="0,0;3,2;0,0" keyTimes="0;.5;1" calcMode="spline"
+        keySplines=".65 0 .35 1;.65 0 .35 1" dur="2.4s" repeatCount="indefinite"/>
+      <animateTransform attributeName="transform" type="scale" additive="sum"
+        values="1;.72;1" keyTimes="0;.5;1" calcMode="spline"
+        keySplines=".65 0 .35 1;.65 0 .35 1" dur="2.4s" repeatCount="indefinite"/>
+    </circle>
   </g>
 </svg>
